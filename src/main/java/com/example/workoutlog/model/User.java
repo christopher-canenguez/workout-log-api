@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class User {
+public class User {
 
     @Id
     @SequenceGenerator(

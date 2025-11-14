@@ -27,7 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class Exercise {
+public class Exercise {
 
     @Id
     @SequenceGenerator(

@@ -22,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class ExerciseSet {
+public class ExerciseSet {
 
     @Id
     @SequenceGenerator(
