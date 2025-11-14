@@ -3,9 +3,11 @@ package com.example.workoutlog.repository;
 import com.example.workoutlog.model.Exercise;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 interface ExerciseRepository extends JpaRepository<Exercise, Long> {
 
     // exercises belong to a workout

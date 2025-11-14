@@ -3,10 +3,12 @@ package com.example.workoutlog.repository;
 import com.example.workoutlog.model.Workout;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@Repository
 interface WorkoutRepository extends JpaRepository<Workout, Long> {
 
     // finds workouts by user id, since workouts belong to users
