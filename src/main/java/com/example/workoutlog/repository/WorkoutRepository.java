@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-interface WorkoutRepository extends JpaRepository<Workout, Long> {
+public interface WorkoutRepository extends JpaRepository<Workout, Long> {
 
     // finds workouts by user id, since workouts belong to users
     List<Workout> findByUserId(Long userId);
