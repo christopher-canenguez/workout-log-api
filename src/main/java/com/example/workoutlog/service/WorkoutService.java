@@ -4,7 +4,7 @@ import com.example.workoutlog.model.Workout;
 
 import java.util.List;
 
-interface WorkoutService {
+public interface WorkoutService {
 
     Workout createWorkout(Workout workout);
 
