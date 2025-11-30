@@ -1,5 +1,6 @@
 package com.example.workoutlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -55,6 +56,7 @@ public class Workout {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonIgnore
     List<Exercise> exercises = new ArrayList<>();
 
     void addExercise(Exercise exercise) {

@@ -1,5 +1,6 @@
 package com.example.workoutlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -43,5 +44,6 @@ public class ExerciseSet {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exercise_id")
+    @JsonIgnore
     Exercise exercise;
 }

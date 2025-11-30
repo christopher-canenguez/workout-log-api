@@ -2,7 +2,6 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.User;
 import com.example.workoutlog.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +12,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    @Autowired
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -33,7 +31,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isEmpty()) {
-            throw new IllegalArgumentException("User with ID " + id + " already exists!");
+            throw new IllegalArgumentException("User with ID " + id + " does not exist!");
         }
 
         return userOptional.get();

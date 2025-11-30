@@ -2,7 +2,6 @@ package com.example.workoutlog.controller;
 
 import com.example.workoutlog.model.ExerciseSet;
 import com.example.workoutlog.service.ExerciseSetService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +20,6 @@ public class ExerciseSetController {
 
     private final ExerciseSetService exerciseSetService;
 
-    @Autowired
     public ExerciseSetController(ExerciseSetService exerciseSetService) {
         this.exerciseSetService = exerciseSetService;
     }

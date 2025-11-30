@@ -2,7 +2,6 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.Exercise;
 import com.example.workoutlog.repository.ExerciseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +11,6 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
 
-    @Autowired
     public ExerciseServiceImpl(ExerciseRepository exerciseRepository) {
         this.exerciseRepository = exerciseRepository;
     }

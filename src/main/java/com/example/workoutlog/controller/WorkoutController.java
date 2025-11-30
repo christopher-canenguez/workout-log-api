@@ -2,7 +2,6 @@ package com.example.workoutlog.controller;
 
 import com.example.workoutlog.model.Workout;
 import com.example.workoutlog.service.WorkoutService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ class WorkoutController {
 
     private final WorkoutService workoutService;
 
-    @Autowired
     WorkoutController(WorkoutService workoutService) {
         this.workoutService = workoutService;
     }
@@ -41,8 +39,7 @@ class WorkoutController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Workout> updateWorkout(@PathVariable Long id,
-                                                 @RequestBody Workout updatedWorkout) {
+    public ResponseEntity<Workout> updateWorkout(@PathVariable Long id, @RequestBody Workout updatedWorkout) {
         return ResponseEntity.ok(workoutService.updateWorkout(id, updatedWorkout));
     }
 }

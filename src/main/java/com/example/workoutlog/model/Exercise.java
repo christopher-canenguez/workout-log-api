@@ -1,5 +1,6 @@
 package com.example.workoutlog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -46,6 +47,7 @@ public class Exercise {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_id")
+    @JsonIgnore
     Workout workout;
 
     @OneToMany(
@@ -53,5 +55,6 @@ public class Exercise {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
+    @JsonIgnore
     List<ExerciseSet> sets = new ArrayList<>();
 }
