@@ -2,10 +2,11 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.User;
 import com.example.workoutlog.repository.UserRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,13 +29,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
 
-        Optional<User> userOptional = userRepository.findById(id);
-
-        if (userOptional.isEmpty()) {
-            throw new IllegalArgumentException("User with ID " + id + " does not exist!");
-        }
-
-        return userOptional.get();
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with ID " + id + " does not exist!"));
     }
 
     @Override
@@ -49,7 +45,6 @@ public class UserServiceImpl implements UserService {
 
         user.setUserName(updatedUser.getUserName());
         user.setEmail(updatedUser.getEmail());
-        user.setWorkouts(updatedUser.getWorkouts());
 
         return userRepository.save(user);
     }

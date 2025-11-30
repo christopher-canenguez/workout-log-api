@@ -14,3 +14,7 @@ spring:
 
 server:
   port: 8080
+  error:
+    include-stacktrace: never      # never send stack traces to client
+    include-message: always        # send the error message (optional)
+    include-binding-errors: never  # keeps responses clean
