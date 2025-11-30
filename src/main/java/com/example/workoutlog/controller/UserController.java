@@ -2,6 +2,7 @@ package com.example.workoutlog.controller;
 
 import com.example.workoutlog.model.User;
 import com.example.workoutlog.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User user) {
+    public ResponseEntity<User> create(@Valid @RequestBody User user) {
         return ResponseEntity.ok(userService.createUser(user));
     }
 
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User updatedUser) {
+    public ResponseEntity<User> update(@PathVariable Long id, @Valid @RequestBody User updatedUser) {
         return ResponseEntity.ok(userService.updateUser(id, updatedUser));
     }
 
