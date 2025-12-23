@@ -2,7 +2,9 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.Workout;
 import com.example.workoutlog.repository.WorkoutRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +28,7 @@ class WorkoutServiceImpl implements WorkoutService {
         Optional<Workout> workoutOptional = workoutRepository.findById(id);
 
         if (workoutOptional.isEmpty()) {
-            throw new IllegalStateException("Workout with Id " + id + " does not exist.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Workout with Id " + id + " does not exist.");
         }
 
         return workoutOptional.get();
@@ -54,9 +56,10 @@ class WorkoutServiceImpl implements WorkoutService {
         boolean doesWorkoutExist = workoutRepository.existsById(id);
 
         if (!doesWorkoutExist) {
-            throw new IllegalStateException("Workout with Id " + id + " does not exist.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Workout with Id " + id + " does not exist.");
         }
 
         workoutRepository.deleteById(id);
     }
+
 }

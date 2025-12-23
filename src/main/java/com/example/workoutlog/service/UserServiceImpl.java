@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         boolean doesUserExist = userRepository.existsById(id);
 
         if (!doesUserExist) {
-            throw new IllegalArgumentException("User with ID " + id + " doesn't exist.");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with ID " + id + " doesn't exist.");
         }
 
         userRepository.deleteById(id);
