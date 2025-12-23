@@ -2,7 +2,9 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.ExerciseSet;
 import com.example.workoutlog.repository.ExerciseSetRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class ExerciseSetServiceImpl implements ExerciseSetService {
     @Override
     public ExerciseSet getExerciseSetById(Long id) {
         return exerciseSetRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("ExerciseSet not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "ExerciseSet not found"));
     }
 
     @Override
@@ -37,7 +39,6 @@ public class ExerciseSetServiceImpl implements ExerciseSetService {
 
         existing.setReps(updatedExerciseSet.getReps());
         existing.setWeight(updatedExerciseSet.getWeight());
-        existing.setNotes(updatedExerciseSet.getNotes());
 
         return exerciseSetRepository.save(existing);
     }

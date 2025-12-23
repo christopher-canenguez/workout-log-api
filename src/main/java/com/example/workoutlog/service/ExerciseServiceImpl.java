@@ -2,7 +2,9 @@ package com.example.workoutlog.service;
 
 import com.example.workoutlog.model.Exercise;
 import com.example.workoutlog.repository.ExerciseRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public class ExerciseServiceImpl implements ExerciseService {
     @Override
     public Exercise getExerciseById(Long id) {
         return exerciseRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Exercise not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercise not found"));
     }
 
     @Override
@@ -43,6 +45,12 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public void deleteExercise(Long id) {
+        var doesExerciseExist = exerciseRepository.existsById(id);
+
+        if (!doesExerciseExist) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercise with ID " + id + " doesn't exist.");
+        }
+
         exerciseRepository.deleteById(id);
     }
 }

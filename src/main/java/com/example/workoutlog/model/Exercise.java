@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -42,19 +43,22 @@ public class Exercise {
     )
     Long id;
 
+    @NotBlank
     String name;
+
+    @NotBlank
     String muscleGroup;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_id")
-    @JsonIgnore
     Workout workout;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "exercise",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JsonIgnore
     List<ExerciseSet> sets = new ArrayList<>();
 }
