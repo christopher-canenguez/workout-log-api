@@ -1,7 +1,8 @@
-package com.example.workoutlog.service;
+package com.example.workoutlog.service.impl;
 
 import com.example.workoutlog.model.Workout;
 import com.example.workoutlog.repository.WorkoutRepository;
+import com.example.workoutlog.service.WorkoutService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
