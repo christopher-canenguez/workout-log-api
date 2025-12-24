@@ -12,7 +12,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,8 +49,10 @@ public class Workout {
     @NotNull
     LocalDate date;
 
+    @NotBlank
     String notes;
 
+    @Positive
     Integer duration;
 
     @JsonIgnore
